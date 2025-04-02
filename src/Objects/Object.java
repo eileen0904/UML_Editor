@@ -10,36 +10,34 @@ public class Object {
     private boolean selected = false;
     private String name = "";
     private ArrayList<Port> portList = new ArrayList<>();
+    private Label label;
 
     public Object(String type, Point position) {
         this.type = type;
         this.position = position;
-        if(type.equals("class")) {
+        if(type.equals("rect")) {
             width = 100;
             height = 150;
-            name = "Class";
+            name = "Rect";
         }
-        else if(type.equals("use case")) {
+        else if(type.equals("oval")) {
             width = 150;
             height = 80;
-            name = "Use Case";
+            name = "oval";
         }
         else { // composite object
             name = "Composite";
         }
+        label = new Label(name);
         initializePorts();
     }
 
     public void draw(Graphics g) {
-        if(type.equals("class")) {
+        if(type.equals("rect")) {
             g.drawRect(position.x, position.y, width, height);
-            //g.drawLine(position.x, position.y + 50, position.x + width, position.y + 50);
-            //g.drawLine(position.x, position.y + 100, position.x + width, position.y + 100);
-            g.drawString(name, position.x + width / 3, position.y + height / 2);
         } 
-        else if(type.equals("use case")) {
+        else if(type.equals("oval")) {
             g.drawOval(position.x, position.y, width, height);
-            g.drawString(name, position.x + width / 3, position.y + height / 2);
         }
 
         if(selected) { // draw ports
@@ -49,6 +47,10 @@ public class Object {
                 g.fillRect(absolutePoint.x - 3, absolutePoint.y - 3, 8, 8);
             }
         }
+
+        if(label.isEnabled()) { // draw label
+            label.draw(g, position, width, height);
+        }
     }
 
     private void initializePorts() {
@@ -57,7 +59,7 @@ public class Object {
         portList.add(new Port(new Point(0, height / 2), "W")); // 中左
         portList.add(new Port(new Point(width, height / 2), "E")); // 中右
         
-        if(type.equals("class")) {
+        if(type.equals("rect")) {
             portList.add(new Port(new Point(0, 0), "LN")); // 左上
             portList.add(new Port(new Point(width, 0), "RN")); // 右上
             portList.add(new Port(new Point(0, height), "LS")); // 左下
@@ -149,11 +151,7 @@ public class Object {
         return this.height;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
+    public Label getLabel() {
+        return label;
     }
 }

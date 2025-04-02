@@ -8,7 +8,6 @@ import Objects.Object;
 import Objects.CompositeObject;
 
 public class Group extends MenuItem implements ActionListener { 
-    
     public Group(String name) {
         super(name);
         addActionListener(this);

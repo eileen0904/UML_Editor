@@ -17,5 +17,4 @@ public class MenuBar extends JMenuBar {
         }
         return instance;
     }
-
 }

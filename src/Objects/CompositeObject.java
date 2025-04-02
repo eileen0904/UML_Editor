@@ -108,11 +108,10 @@ public class CompositeObject extends Object {
 
     public Port PointToPort(Point p) {
         for(Object obj : components) {
-            for (Port port : obj.getPortList()) {
+            for(Port port : obj.getPortList()) {
                 Point absolutePoint = obj.getAbsolutePort(port.getPort());
-                if (absolutePoint.equals(p)) {
+                if(absolutePoint.equals(p)) 
                     return port;
-                }
             }
         }
         return null;

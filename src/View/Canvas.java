@@ -70,7 +70,7 @@ public class Canvas extends JPanel {
             }
             repaint();
         } 
-        else if(mode.equals("class") || mode.equals("use case")) {
+        else if(mode.equals("rect") || mode.equals("oval")) {
             Object newObject = new Object(mode, p);
             objects.add(newObject);
             repaint();
