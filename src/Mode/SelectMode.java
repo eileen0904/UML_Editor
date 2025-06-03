@@ -11,9 +11,7 @@ public class SelectMode extends CanvasMode {
     public void mousePressed(MouseEvent e) {
         Point p = e.getPoint();
         canvas.selectedObject = canvas.findObjectAt(p);
-        //System.out.println("Select Mode");
         if(canvas.selectedObject != null) {
-            //System.out.println("selectedObject = " + canvas.selectedObject.getClass().getName());
             canvas.selectedObject.setSelected(true);
             offset = new Point(canvas.selectedObject.getPosition().x - p.x, canvas.selectedObject.getPosition().y - p.y);
             canvas.repaint();

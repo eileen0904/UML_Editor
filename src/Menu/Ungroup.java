@@ -19,10 +19,7 @@ public class Ungroup extends MenuItem implements ActionListener {
     }
 
     private void handleUngroup() {
-        //System.out.println("UnGroup");
-        //System.out.println("selectedObject = " + canvas.selectedObject);
         if(canvas.selectedObject instanceof CompositeObject) {
-            //System.out.println("ungroup");
             CompositeObject composite = (CompositeObject) canvas.selectedObject;
 
             // 解構 CompositeObject 的最外層

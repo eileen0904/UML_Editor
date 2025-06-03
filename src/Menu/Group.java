@@ -20,11 +20,9 @@ public class Group extends MenuItem implements ActionListener {
 
     private void handleGroup() {
         ArrayList<ObjectAbstract> selectedObjects = new ArrayList<>();
-        //System.out.println("Group");
         for(ObjectAbstract obj : canvas.getObjects()) {
             if(obj.isSelected()) {
                 selectedObjects.add(obj);
-                //System.out.println(obj.getClass().getName());
             }
         }
 
