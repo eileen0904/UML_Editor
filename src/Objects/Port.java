@@ -36,5 +36,4 @@ public class Port {
     public String getDirection() {
         return direction;
     }
-
 }

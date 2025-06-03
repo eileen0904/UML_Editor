@@ -1,14 +1,13 @@
 package Menu;
 
 import javax.swing.*;
+import Objects.Label;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Objects.Object;
 
 public class CustomLabel extends MenuItem implements ActionListener {
-    private Object selectedObject;
-    private Objects.Label objLabel;
+    private Label objLabel;
     private JDialog dialog;
     private JTextField nameField;
     private JComboBox<String> shapeComboBox;
@@ -26,9 +25,8 @@ public class CustomLabel extends MenuItem implements ActionListener {
     }
 
     private void handleCustomLabel() {
-        selectedObject = canvas.getSelectedObject();
-        if(selectedObject != null) {
-            objLabel = selectedObject.getLabel();
+        if(canvas.selectedObject != null) {
+            objLabel = canvas.selectedObject.getLabel();
             createCustomLabelDialog();
         } 
         else {

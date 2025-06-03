@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import Objects.Object;
 import Objects.CompositeObject;
+import Objects.BasicObjects.ObjectAbstract;
 
 public class Group extends MenuItem implements ActionListener { 
     public Group(String name) {
@@ -19,22 +19,23 @@ public class Group extends MenuItem implements ActionListener {
     }
 
     private void handleGroup() {
-        ArrayList<Object> selectedObjects = new ArrayList<>();
-
-        for(Object obj : canvas.objects) {
+        ArrayList<ObjectAbstract> selectedObjects = new ArrayList<>();
+        //System.out.println("Group");
+        for(ObjectAbstract obj : canvas.getObjects()) {
             if(obj.isSelected()) {
                 selectedObjects.add(obj);
+                //System.out.println(obj.getClass().getName());
             }
         }
 
         if(selectedObjects.size() > 1) {
-            for(Object obj : selectedObjects) {
+            for(ObjectAbstract obj : selectedObjects) {
                 obj.setSelected(false);
             }
-            canvas.objects.removeAll(selectedObjects);
+            canvas.getObjects().removeAll(selectedObjects);
 
-            CompositeObject composite = new CompositeObject(selectedObjects);
-            canvas.objects.add(composite);
+            ObjectAbstract composite = new CompositeObject(selectedObjects);
+            canvas.getObjects().add(composite);
 
             canvas.repaint();
         }
